@@ -351,6 +351,88 @@ lxc start my-vm
 
 
 
+---
+---
+
+
+
+## LXD Web UI: 
+
+### Enable HTTPS API:
+
+```
+lxc config set core.https_address :8443
+```
+
+
+```
+lxc config get core.https_address
+```
+
+
+
+```
+lxc config show
+
+config:
+  core.https_address: :8443
+  volatile.uuid: 019f4c62-bde6-72f5-8e92-700142f9ca3a
+```
+
+
+
+### Add Trust Certificate:
+
+```
+-- Generate a token:
+lxc config trust add
+
+
+Or,
+lxc config trust add --name my-browser
+
+
+-- List all active certificate add tokens:
+lxc config trust list-tokens
+
+
+-- Revoke token
+lxc config trust revoke-token my-browser
+```
+
+
+
+```
+-- Check remote was added:  
+lxc remote list
+
+
+-- Check trusted clients: 
+lxc config trust list
+```
+
+
+
+_If, Disable web UI:_
+```
+lxc config unset core.https_address
+```
+
+
+### Verify: 
+
+```
+curl -k https://10.1.1.22:8443/1.0
+```
+
+
+
+_Open a browser and go to:_
+```
+https://<HOST-IP>:8443
+```
+
+
 
 ---
 ---
