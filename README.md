@@ -522,9 +522,16 @@ project: default
 ```
 
 
+
+```
+lxc network list
+```
+
+
+
 _Add the device directly to the VM (override profile):_
 ```
-lxc config device add my-vm eth0 nic network=lxdbr0 name=eth0 ipv4.address=10.208.106.186
+lxc config device add my-vm eth0 nic network=lxdbr0 ipv4.address=10.208.106.186
 
 lxc restart my-vm
 ```
